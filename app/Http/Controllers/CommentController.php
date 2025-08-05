@@ -2,7 +2,8 @@
 
 namespace App\Http\Controllers;
 
-use App\Http\Requests\CommentRequest;
+use App\Http\Requests\Comment\StoreCommentRequest;
+use App\Http\Requests\Comment\UpdateCommentRequest;
 use App\Http\Resources\CommentResource;
 use App\Models\Comment;
 
@@ -34,7 +35,7 @@ class CommentController extends Controller
      * @throws \Illuminate\Validation\ValidationException
      * Если данные не прошли валидацию
      */
-    public function store(CommentRequest $request)
+    public function store(StoreCommentRequest $request)
     {
         $comment = Comment::create($request->validated());
         return new CommentResource($comment);
@@ -63,7 +64,7 @@ class CommentController extends Controller
      * @throws \Illuminate\Validation\ValidationException
      * Если данные не прошли валидацию
      */
-    public function update(CommentRequest $request, Comment $comment)
+    public function update(UpdateCommentRequest $request, Comment $comment)
     {
         $comment->update($request->validated());
         return new CommentResource($comment);
