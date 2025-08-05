@@ -8,9 +8,15 @@ use Illuminate\Http\Resources\Json\JsonResource;
 class PostResource extends JsonResource
 {
     /**
-     * Transform the resource into an array.
-     *
-     * @return array<string, mixed>
+     * @OA\Schema(
+     *     schema="Post",
+     *     required={"user_id", "body"},
+     *     @OA\Property(property="id", type="integer", example=1),
+     *     @OA\Property(property="user_id", type="integer", example=1),
+     *     @OA\Property(property="body", type="string", example="Post content"),
+     *     @OA\Property(property="created_at", type="string", format="date-time"),
+     *     @OA\Property(property="updated_at", type="string", format="date-time")
+     * )
      */
     public function toArray(Request $request): array
     {

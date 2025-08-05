@@ -8,9 +8,16 @@ use Illuminate\Http\Resources\Json\JsonResource;
 class CommentResource extends JsonResource
 {
     /**
-     * Transform the resource into an array.
-     *
-     * @return array<string, mixed>
+     * @OA\Schema(
+     *     schema="Comment",
+     *     required={"post_id", "user_id", "body"},
+     *     @OA\Property(property="id", type="integer", example=1),
+     *     @OA\Property(property="post_id", type="integer", example=1),
+     *     @OA\Property(property="user_id", type="integer", example=1),
+     *     @OA\Property(property="body", type="string", example="Comment text"),
+     *     @OA\Property(property="created_at", type="string", format="date-time"),
+     *     @OA\Property(property="updated_at", type="string", format="date-time")
+     * )
      */
     public function toArray(Request $request): array
     {
