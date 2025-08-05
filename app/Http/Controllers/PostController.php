@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use App\Http\Requests\PostRequest;
+use App\Http\Requests\StorePostRequest;
+use App\Http\Requests\UpdatePostRequest;
 use App\Http\Resources\CommentResource;
 use App\Http\Resources\PostResource;
 use App\Models\Post;
@@ -33,7 +35,7 @@ class PostController extends Controller
      * @param PostRequest $request Запрос с валидированными данными
      * @return PostResource Созданный пост
      */
-    public function store(PostRequest $request)
+    public function store(StorePostRequest $request)
     {
         $post = Post::create($request->validated());
         return new PostResource($post);
@@ -57,7 +59,7 @@ class PostController extends Controller
      * @param Post $post Модель поста для обновления
      * @return PostResource Обновленный пост
      */
-    public function update(PostRequest $request, Post $post)
+    public function update(UpdatePostRequest $request, Post $post)
     {
         $post->update($request->validated());
         return new PostResource($post);
